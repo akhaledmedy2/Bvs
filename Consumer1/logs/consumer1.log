@@ -1,0 +1,713 @@
+2022-06-13 13:00:50.334  INFO 10060 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 10060 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:00:50.340  INFO 10060 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:00:54.638  INFO 10060 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:00:54.868  INFO 10060 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#616b241a:0/SimpleConnection@1846579f [delegate=amqp://guest@127.0.0.1:5672/, localPort= 10562]
+2022-06-13 13:00:54.880  INFO 10060 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:00:55.185  INFO 10060 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 8.806 seconds (JVM running for 11.457)
+2022-06-13 13:00:55.210  INFO 10060 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:00:56.185  INFO 10060 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:00:56.188  INFO 10060 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:01:06.375  INFO 9548 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 9548 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:01:06.381  INFO 9548 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:01:12.233  INFO 9548 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:01:22.293  INFO 9548 --- [main] o.s.a.r.l.SimpleMessageListenerContainer : Broker not available; cannot force queue declarations during start: java.io.IOException
+2022-06-13 13:01:22.309  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:01:32.333 ERROR 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:70) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:129) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:125) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:396) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	... 17 common frames omitted
+Caused by: java.io.EOFException: null
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.13.1.jar:5.13.1]
+	... 1 common frames omitted
+
+2022-06-13 13:01:32.340  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:01:37.359  WARN 9548 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:01:42.373  WARN 9548 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:01:42.393  INFO 9548 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 37.563 seconds (JVM running for 39.319)
+2022-06-13 13:01:47.522  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@228cea97: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:01:47.531  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:01:57.563  WARN 9548 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:01:57.566 ERROR 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:01:57.568  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:02:12.678  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@4a7271eb: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:02:12.683  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:02:20.344  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:02:20.352  INFO 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:02:20.356  INFO 9548 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:02:22.724  WARN 9548 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:02:22.731 ERROR 9548 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:02:30.332  INFO 9368 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 9368 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:02:30.336  INFO 9368 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:02:32.520  INFO 9368 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:02:42.608  INFO 9368 --- [main] o.s.a.r.l.SimpleMessageListenerContainer : Broker not available; cannot force queue declarations during start: java.io.IOException
+2022-06-13 13:02:42.642  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:02:47.654  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:02:52.676  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:02:52.693 ERROR 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:02:52.704  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:02:57.716  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:02.839  INFO 9368 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 33.311 seconds (JVM running for 34.387)
+2022-06-13 13:03:07.860  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@62d73ead: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:03:07.864  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:03:12.877  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:17.893  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:17.909 ERROR 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:03:17.911  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:03:27.935  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:33.020  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@7c3311c1: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:03:33.025  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:03:43.070  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:43.091 ERROR 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:03:43.107  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:03:53.130  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:03:58.229  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-3] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@510e2d43: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:03:58.236  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:04:03.252  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:04:08.280  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:04:08.291 ERROR 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpTimeoutException: java.util.concurrent.TimeoutException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:73) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.util.concurrent.TimeoutException: null
+	at com.rabbitmq.utility.BlockingCell.get(BlockingCell.java:77) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingCell.uninterruptibleGet(BlockingCell.java:120) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+
+2022-06-13 13:04:08.294  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:04:23.414  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-4] o.s.a.r.l.SimpleMessageListenerContainer : Restarting Consumer@e90ee9b: tags=[[]], channel=null, acknowledgeMode=AUTO local queue size=0
+2022-06-13 13:04:23.416  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:04:28.442  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:04:33.458 ERROR 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.l.SimpleMessageListenerContainer : Failed to check/redeclare auto-delete queue(s).
+
+org.springframework.amqp.AmqpIOException: java.io.IOException
+	at org.springframework.amqp.rabbit.support.RabbitExceptionTranslator.convertRabbitAccessException(RabbitExceptionTranslator.java:70) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:602) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.CachingConnectionFactory.createConnection(CachingConnectionFactory.java:725) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.ConnectionFactoryUtils.createConnection(ConnectionFactoryUtils.java:252) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.doExecute(RabbitTemplate.java:2173) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitTemplate.execute(RabbitTemplate.java:2126) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueInfo(RabbitAdmin.java:463) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.core.RabbitAdmin.getQueueProperties(RabbitAdmin.java:447) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.attemptDeclarations(AbstractMessageListenerContainer.java:1917) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.redeclareElementsIfNecessary(AbstractMessageListenerContainer.java:1898) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.initialize(SimpleMessageListenerContainer.java:1374) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1220) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.io.IOException: null
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:129) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel.wrap(AMQChannel.java:125) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:396) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1225) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.ConnectionFactory.newConnection(ConnectionFactory.java:1173) ~[amqp-client-5.13.1.jar:5.13.1]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connectAddresses(AbstractConnectionFactory.java:640) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.connect(AbstractConnectionFactory.java:615) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.connection.AbstractConnectionFactory.createBareConnection(AbstractConnectionFactory.java:565) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 12 common frames omitted
+Caused by: com.rabbitmq.client.ShutdownSignalException: connection error
+	at com.rabbitmq.utility.ValueOrException.getValue(ValueOrException.java:66) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.utility.BlockingValueOrException.uninterruptibleGetValue(BlockingValueOrException.java:36) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQChannel$BlockingRpcContinuation.getReply(AMQChannel.java:502) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection.start(AMQConnection.java:326) ~[amqp-client-5.13.1.jar:5.13.1]
+	... 17 common frames omitted
+Caused by: java.io.EOFException: null
+	at java.base/java.io.DataInputStream.readUnsignedByte(DataInputStream.java:296) ~[na:na]
+	at com.rabbitmq.client.impl.Frame.readFrom(Frame.java:91) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.SocketFrameHandler.readFrame(SocketFrameHandler.java:184) ~[amqp-client-5.13.1.jar:5.13.1]
+	at com.rabbitmq.client.impl.AMQConnection$MainLoop.run(AMQConnection.java:665) ~[amqp-client-5.13.1.jar:5.13.1]
+	... 1 common frames omitted
+
+2022-06-13 13:04:33.465  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-5] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:15672]
+2022-06-13 13:04:38.470  WARN 9368 --- [AMQP Connection 127.0.0.1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:04:43.492  WARN 9368 --- [AMQP Connection 0:0:0:0:0:0:0:1:15672] c.r.c.impl.ForgivingExceptionHandler     : An unexpected connection driver error occurred (Exception message: Socket closed)
+2022-06-13 13:04:46.809  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:04:46.811  INFO 9368 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-6] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:04:46.816  INFO 9368 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:04:50.075  INFO 8308 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 8308 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:04:50.081  INFO 8308 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:04:52.382  INFO 8308 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:04:52.513  INFO 8308 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7cb2651f:0/SimpleConnection@6cd166b8 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 10989]
+2022-06-13 13:04:52.521  INFO 8308 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:04:52.645  INFO 8308 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 3.405 seconds (JVM running for 4.354)
+2022-06-13 13:26:44.050  INFO 8308 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:26:44.968  INFO 8308 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:26:44.988  INFO 8308 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:31:15.718  INFO 16452 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 16452 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:31:15.725  INFO 16452 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:31:18.236  INFO 16452 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-13 13:31:18.277  INFO 16452 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-13 13:31:18.279  INFO 16452 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-13 13:31:18.596  INFO 16452 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-13 13:31:18.596  INFO 16452 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2701 ms
+2022-06-13 13:31:22.339  WARN 16452 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'; nested exception is org.springframework.boot.web.server.PortInUseException: Port 8080 is already in use
+2022-06-13 13:31:22.354  INFO 16452 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-06-13 13:31:22.452  INFO 16452 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-13 13:31:22.545 ERROR 16452 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8080 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8080 or configure this application to listen on another port.
+
+2022-06-13 13:33:48.511  INFO 11712 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 11712 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:33:48.517  INFO 11712 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:33:50.616  INFO 11712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-06-13 13:33:50.657  INFO 11712 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-13 13:33:50.658  INFO 11712 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-13 13:33:51.011  INFO 11712 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-13 13:33:51.011  INFO 11712 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2359 ms
+2022-06-13 13:33:53.113  INFO 11712 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-06-13 13:33:53.116  INFO 11712 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:33:53.244  INFO 11712 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#60e06f7d:0/SimpleConnection@42507640 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 10532]
+2022-06-13 13:33:53.271  INFO 11712 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:33:53.435  INFO 11712 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 5.848 seconds (JVM running for 6.901)
+2022-06-13 13:38:12.611  WARN 11712 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void com.consumer.consumer1.listener.RabbitMqListener.listen(java.lang.Object)' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:271) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:208) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:147) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.ClassCastException: class org.springframework.amqp.core.Message cannot be cast to class com.consumer.consumer1.dto.EventMessageDto (org.springframework.amqp.core.Message and com.consumer.consumer1.dto.EventMessageDto are in unnamed module of loader 'app')
+	at com.consumer.consumer1.listener.RabbitMqListener.listen(RabbitMqListener.java:20) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:75) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:262) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 13 common frames omitted
+
+2022-06-13 13:38:12.613  WARN 11712 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] ingErrorHandler$DefaultExceptionStrategy : Fatal message conversion error; message rejected; it will be dropped or routed to a dead letter exchange, if so configured: (Body:'Message from consumer consumer1' MessageProperties [headers={}, contentType=text/plain, contentEncoding=UTF-8, contentLength=0, receivedDeliveryMode=PERSISTENT, priority=0, redelivered=false, receivedExchange=, receivedRoutingKey=consumer1, deliveryTag=1, consumerTag=amq.ctag-xg2VWgn_HBTeVWxtMZf99A, consumerQueue=consumer1])
+2022-06-13 13:38:12.614 ERROR 11712 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Execution of Rabbit message listener failed, and the error handler threw an exception
+
+org.springframework.amqp.AmqpRejectAndDontRequeueException: Error Handler converted exception to fatal
+	at org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler.handleError(ConditionalRejectingErrorHandler.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeErrorHandler(AbstractMessageListenerContainer.java:1461) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.handleListenerException(AbstractMessageListenerContainer.java:1745) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1520) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void com.consumer.consumer1.listener.RabbitMqListener.listen(java.lang.Object)' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:271) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:208) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:147) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 6 common frames omitted
+Caused by: java.lang.ClassCastException: class org.springframework.amqp.core.Message cannot be cast to class com.consumer.consumer1.dto.EventMessageDto (org.springframework.amqp.core.Message and com.consumer.consumer1.dto.EventMessageDto are in unnamed module of loader 'app')
+	at com.consumer.consumer1.listener.RabbitMqListener.listen(RabbitMqListener.java:20) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:75) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:262) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 13 common frames omitted
+
+2022-06-13 13:38:12.654  INFO 11712 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:38:13.641  INFO 11712 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:38:13.721  INFO 11712 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:38:29.655  INFO 17068 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 17068 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:38:29.662  INFO 17068 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:38:35.279  INFO 17068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-06-13 13:38:35.369  INFO 17068 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-13 13:38:35.374  INFO 17068 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-13 13:38:36.243  INFO 17068 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-13 13:38:36.244  INFO 17068 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6364 ms
+2022-06-13 13:38:37.778  INFO 17068 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-06-13 13:38:37.782  INFO 17068 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:38:37.902  INFO 17068 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6d6d480c:0/SimpleConnection@d13baac [delegate=amqp://guest@127.0.0.1:5672/, localPort= 10511]
+2022-06-13 13:38:37.913  INFO 17068 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:38:38.031  INFO 17068 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 10.584 seconds (JVM running for 13.142)
+2022-06-13 13:41:23.203  WARN 17068 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Failed to convert message
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:156) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: org.springframework.amqp.support.converter.MessageConversionException: failed to convert serialized Message content
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:117) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.AbstractAdaptableMessageListener.extractMessage(AbstractAdaptableMessageListener.java:342) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter$MessagingMessageConverterAdapter.extractPayload(MessagingMessageListenerAdapter.java:366) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.MessagingMessageConverter.fromMessage(MessagingMessageConverter.java:132) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.toMessagingMessage(MessagingMessageListenerAdapter.java:243) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 11 common frames omitted
+Caused by: java.lang.IllegalStateException: Could not deserialize object type
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:97) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:113) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 16 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.bvs.dto.EventMessageDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.core.ConfigurableObjectInputStream.resolveClass(ConfigurableObjectInputStream.java:76) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter$1.resolveClass(SimpleMessageConverter.java:183) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1909) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2235) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1744) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:514) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:472) ~[na:na]
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:91) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 17 common frames omitted
+
+2022-06-13 13:41:23.205  WARN 17068 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] ingErrorHandler$DefaultExceptionStrategy : Fatal message conversion error; message rejected; it will be dropped or routed to a dead letter exchange, if so configured: (Body:'[serialized object]' MessageProperties [headers={}, contentType=application/x-java-serialized-object, contentLength=0, receivedDeliveryMode=PERSISTENT, priority=0, redelivered=false, receivedExchange=, receivedRoutingKey=consumer1, deliveryTag=1, consumerTag=amq.ctag-IhFa43sWnQz_Ivm2V2_s1g, consumerQueue=consumer1])
+2022-06-13 13:41:23.218 ERROR 17068 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Execution of Rabbit message listener failed, and the error handler threw an exception
+
+org.springframework.amqp.AmqpRejectAndDontRequeueException: Error Handler converted exception to fatal
+	at org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler.handleError(ConditionalRejectingErrorHandler.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeErrorHandler(AbstractMessageListenerContainer.java:1461) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.handleListenerException(AbstractMessageListenerContainer.java:1745) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1520) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Failed to convert message
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:156) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 6 common frames omitted
+Caused by: org.springframework.amqp.support.converter.MessageConversionException: failed to convert serialized Message content
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:117) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.AbstractAdaptableMessageListener.extractMessage(AbstractAdaptableMessageListener.java:342) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter$MessagingMessageConverterAdapter.extractPayload(MessagingMessageListenerAdapter.java:366) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.MessagingMessageConverter.fromMessage(MessagingMessageConverter.java:132) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.toMessagingMessage(MessagingMessageListenerAdapter.java:243) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 11 common frames omitted
+Caused by: java.lang.IllegalStateException: Could not deserialize object type
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:97) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:113) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 16 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.bvs.dto.EventMessageDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.core.ConfigurableObjectInputStream.resolveClass(ConfigurableObjectInputStream.java:76) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter$1.resolveClass(SimpleMessageConverter.java:183) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1909) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2235) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1744) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:514) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:472) ~[na:na]
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:91) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 17 common frames omitted
+
+2022-06-13 13:41:57.769  INFO 17068 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:41:58.557  INFO 17068 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:41:58.593  INFO 17068 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:42:06.026  INFO 2840 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 2840 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:42:06.032  INFO 2840 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:42:09.690  INFO 2840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-06-13 13:42:09.730  INFO 2840 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-13 13:42:09.733  INFO 2840 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-13 13:42:10.097  INFO 2840 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-13 13:42:10.098  INFO 2840 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3852 ms
+2022-06-13 13:42:12.640  INFO 2840 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-06-13 13:42:12.646  INFO 2840 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:42:12.877  INFO 2840 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#6d6d480c:0/SimpleConnection@11dcd42c [delegate=amqp://guest@127.0.0.1:5672/, localPort= 10665]
+2022-06-13 13:42:12.888  INFO 2840 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:42:12.991  INFO 2840 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 8.302 seconds (JVM running for 9.567)
+2022-06-13 13:42:48.546  WARN 2840 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Failed to convert message
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:156) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: org.springframework.amqp.support.converter.MessageConversionException: failed to convert serialized Message content
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:117) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.AbstractAdaptableMessageListener.extractMessage(AbstractAdaptableMessageListener.java:342) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter$MessagingMessageConverterAdapter.extractPayload(MessagingMessageListenerAdapter.java:366) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.MessagingMessageConverter.fromMessage(MessagingMessageConverter.java:132) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.toMessagingMessage(MessagingMessageListenerAdapter.java:243) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 11 common frames omitted
+Caused by: java.lang.IllegalStateException: Could not deserialize object type
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:97) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:113) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 16 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.bvs.dto.EventMessageDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.core.ConfigurableObjectInputStream.resolveClass(ConfigurableObjectInputStream.java:76) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter$1.resolveClass(SimpleMessageConverter.java:183) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1909) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2235) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1744) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:514) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:472) ~[na:na]
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:91) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 17 common frames omitted
+
+2022-06-13 13:42:48.548  WARN 2840 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] ingErrorHandler$DefaultExceptionStrategy : Fatal message conversion error; message rejected; it will be dropped or routed to a dead letter exchange, if so configured: (Body:'[serialized object]' MessageProperties [headers={}, contentType=application/x-java-serialized-object, contentLength=0, receivedDeliveryMode=PERSISTENT, priority=0, redelivered=false, receivedExchange=, receivedRoutingKey=consumer1, deliveryTag=1, consumerTag=amq.ctag-bx0mn2rebJJe73zkbILCvw, consumerQueue=consumer1])
+2022-06-13 13:42:48.550 ERROR 2840 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] o.s.a.r.l.SimpleMessageListenerContainer : Execution of Rabbit message listener failed, and the error handler threw an exception
+
+org.springframework.amqp.AmqpRejectAndDontRequeueException: Error Handler converted exception to fatal
+	at org.springframework.amqp.rabbit.listener.ConditionalRejectingErrorHandler.handleError(ConditionalRejectingErrorHandler.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeErrorHandler(AbstractMessageListenerContainer.java:1461) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.handleListenerException(AbstractMessageListenerContainer.java:1745) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1520) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Failed to convert message
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:156) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 6 common frames omitted
+Caused by: org.springframework.amqp.support.converter.MessageConversionException: failed to convert serialized Message content
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:117) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.AbstractAdaptableMessageListener.extractMessage(AbstractAdaptableMessageListener.java:342) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter$MessagingMessageConverterAdapter.extractPayload(MessagingMessageListenerAdapter.java:366) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.MessagingMessageConverter.fromMessage(MessagingMessageConverter.java:132) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.toMessagingMessage(MessagingMessageListenerAdapter.java:243) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:146) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 11 common frames omitted
+Caused by: java.lang.IllegalStateException: Could not deserialize object type
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:97) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter.fromMessage(SimpleMessageConverter.java:113) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 16 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.example.bvs.dto.EventMessageDto
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641) ~[na:na]
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188) ~[na:na]
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:520) ~[na:na]
+	at java.base/java.lang.Class.forName0(Native Method) ~[na:na]
+	at java.base/java.lang.Class.forName(Class.java:467) ~[na:na]
+	at org.springframework.util.ClassUtils.forName(ClassUtils.java:284) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.core.ConfigurableObjectInputStream.resolveClass(ConfigurableObjectInputStream.java:76) ~[spring-core-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.support.converter.SimpleMessageConverter$1.resolveClass(SimpleMessageConverter.java:183) ~[spring-amqp-2.4.5.jar:2.4.5]
+	at java.base/java.io.ObjectInputStream.readNonProxyDesc(ObjectInputStream.java:2045) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readClassDesc(ObjectInputStream.java:1909) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readOrdinaryObject(ObjectInputStream.java:2235) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject0(ObjectInputStream.java:1744) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:514) ~[na:na]
+	at java.base/java.io.ObjectInputStream.readObject(ObjectInputStream.java:472) ~[na:na]
+	at org.springframework.amqp.utils.SerializationUtils.deserialize(SerializationUtils.java:91) ~[spring-amqp-2.4.5.jar:2.4.5]
+	... 17 common frames omitted
+
+2022-06-13 13:47:58.979  INFO 2840 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:47:59.208  INFO 2840 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:47:59.243  INFO 2840 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2022-06-13 13:48:10.840  INFO 10652 --- [main] c.c.consumer1.Consumer1Application       : Starting Consumer1Application using Java 17.0.2 on Ahmed-Fouad with PID 10652 (C:\workspace\Consumer1\target\classes started by Ahmed.fouad in C:\workspace\Consumer1)
+2022-06-13 13:48:10.845  INFO 10652 --- [main] c.c.consumer1.Consumer1Application       : The following 1 profile is active: "local"
+2022-06-13 13:48:13.131  INFO 10652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9090 (http)
+2022-06-13 13:48:13.171  INFO 10652 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-13 13:48:13.174  INFO 10652 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-13 13:48:13.628  INFO 10652 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-06-13 13:48:13.629  INFO 10652 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2654 ms
+2022-06-13 13:48:17.834  INFO 10652 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9090 (http) with context path ''
+2022-06-13 13:48:17.840  INFO 10652 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2022-06-13 13:48:18.113  INFO 10652 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#9ab310b:0/SimpleConnection@68b11545 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 14908]
+2022-06-13 13:48:18.125  INFO 10652 --- [main] o.s.amqp.rabbit.core.RabbitAdmin         : Auto-declaring a non-durable, auto-delete, or exclusive Queue (consumer1) durable:false, auto-delete:false, exclusive:false. It will be redeclared if the broker stops and is restarted while the connection factory is alive, but all messages will be lost.
+2022-06-13 13:48:18.365  INFO 10652 --- [main] c.c.consumer1.Consumer1Application       : Started Consumer1Application in 8.501 seconds (JVM running for 9.694)
+2022-06-13 13:49:30.463  INFO 10652 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2022-06-13 13:49:30.540  WARN 10652 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-1] s.a.r.l.ConditionalRejectingErrorHandler : Execution of Rabbit message listener failed.
+
+org.springframework.amqp.rabbit.support.ListenerExecutionFailedException: Listener method 'public void com.consumer.consumer1.listener.RabbitMqListener.listen(java.lang.String)' threw exception
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:271) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandlerAndProcessResult(MessagingMessageListenerAdapter.java:208) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.onMessage(MessagingMessageListenerAdapter.java:147) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doInvokeListener(AbstractMessageListenerContainer.java:1657) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.actualInvokeListener(AbstractMessageListenerContainer.java:1576) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.invokeListener(AbstractMessageListenerContainer.java:1564) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.doExecuteListener(AbstractMessageListenerContainer.java:1555) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.AbstractMessageListenerContainer.executeListener(AbstractMessageListenerContainer.java:1499) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.doReceiveAndExecute(SimpleMessageListenerContainer.java:992) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.receiveAndExecute(SimpleMessageListenerContainer.java:939) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer.access$1600(SimpleMessageListenerContainer.java:84) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.mainLoop(SimpleMessageListenerContainer.java:1316) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.SimpleMessageListenerContainer$AsyncMessageProcessingConsumer.run(SimpleMessageListenerContainer.java:1222) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+Caused by: java.lang.IllegalArgumentException: URI is not absolute
+	at java.base/java.net.URL.fromURI(URL.java:721) ~[na:na]
+	at java.base/java.net.URI.toURL(URI.java:1139) ~[na:na]
+	at org.springframework.http.client.SimpleClientHttpRequestFactory.createRequest(SimpleClientHttpRequestFactory.java:145) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.http.client.support.HttpAccessor.createRequest(HttpAccessor.java:124) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.client.RestTemplate.doExecute(RestTemplate.java:772) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.client.RestTemplate.execute(RestTemplate.java:711) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.client.RestTemplate.exchange(RestTemplate.java:602) ~[spring-web-5.3.20.jar:5.3.20]
+	at com.consumer.consumer1.listener.RabbitMqListener.listen(RabbitMqListener.java:28) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:169) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.messaging.handler.invocation.InvocableHandlerMethod.invoke(InvocableHandlerMethod.java:119) ~[spring-messaging-5.3.20.jar:5.3.20]
+	at org.springframework.amqp.rabbit.listener.adapter.HandlerAdapter.invoke(HandlerAdapter.java:75) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	at org.springframework.amqp.rabbit.listener.adapter.MessagingMessageListenerAdapter.invokeHandler(MessagingMessageListenerAdapter.java:262) ~[spring-rabbit-2.4.5.jar:2.4.5]
+	... 13 common frames omitted
+
+2022-06-13 13:49:30.556  INFO 10652 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2022-06-13 13:49:30.594  INFO 10652 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
