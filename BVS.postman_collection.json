@@ -1,19 +1,25 @@
 {
 	"info": {
-		"_postman_id": "d8814e31-9708-4a32-a6e3-aca31532eaf8",
+		"_postman_id": "34186b76-e75c-4c6a-bc83-793b84e2413f",
 		"name": "BVS",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "14446284"
 	},
 	"item": [
 		{
-			"name": "Create Router",
+			"name": "send message event",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "message",
+						"value": "hi",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"accountName\": \"medy\"\r\n}",
+					"raw": "{\r\n    \"name\": \"ahmed\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -21,44 +27,14 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/create",
+					"raw": "http://localhost:8080/consumer1",
 					"protocol": "http",
 					"host": [
 						"localhost"
 					],
 					"port": "8080",
 					"path": [
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "send message event",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "message",
-						"value": "hi",
-						"type": "text"
-					},
-					{
-						"key": "account_id",
-						"value": "1654633838807",
-						"type": "text"
-					}
-				],
-				"url": {
-					"raw": "http://localhost:8080/",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						""
+						"consumer1"
 					]
 				}
 			},

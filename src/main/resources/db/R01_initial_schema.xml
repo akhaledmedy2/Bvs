@@ -8,11 +8,8 @@
             <column name="id" type="bigint" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="account_name" type="varchar(255)"/>
-            <column name="account_id" type="bigint"/>
-            <column name="creation_date" type="timestamp"/>
-            <column name="update_date" type="timestamp"/>
-            <column name="enabled" type="boolean"/>
+            <column name="consumer_name" type="varchar(255)"/>
+            <column name="queue_name" type="varchar(255)"/>
         </createTable>
     </changeSet>
 

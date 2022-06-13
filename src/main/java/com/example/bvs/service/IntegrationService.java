@@ -2,6 +2,7 @@ package com.example.bvs.service;
 
 import com.example.bvs.dto.EventMessageDto;
 import com.example.bvs.entity.Router;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -16,13 +17,9 @@ import javax.servlet.http.HttpServletRequest;
 public class IntegrationService {
 
     @Autowired
-    private RestTemplate restTemplate;
+    private RabbitTemplate rabbitTemplate;
 
-    public void composeAndPut(EventMessageDto messageDto) {
-        // suppose that here will handle router http request then send it to message queuing service to register and event
-        // suppose that here will be the entry point of the callback
-        HttpEntity<EventMessageDto> request = new HttpEntity(messageDto, null);
-        restTemplate.exchange("http://127.0.0.1:8080/webhook", HttpMethod.POST, request, String.class);
-
+    public void composeAndPut(String jsonString,Router router) {
+        rabbitTemplate.convertAndSend(router.getQueueName(), jsonString);
     }
 }

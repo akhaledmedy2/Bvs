@@ -1,22 +1,18 @@
 package com.example.bvs.service;
 
 import com.example.bvs.dto.EventMessageDto;
-import com.example.bvs.dto.RouterCreateDto;
-import com.example.bvs.dto.RouterDto;
 import com.example.bvs.entity.Router;
-import com.example.bvs.mapper.RouterMapper;
 import com.example.bvs.repository.RouterRepository;
-import org.mapstruct.factory.Mappers;
+import com.google.gson.Gson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @Service
 public class RouterService {
-
-    private RouterMapper routerMapper = Mappers.getMapper(RouterMapper.class);
 
     @Autowired
     private RouterRepository routerRepository;
@@ -24,20 +20,20 @@ public class RouterService {
     @Autowired
     private IntegrationService integrationService;
 
-    public RouterDto createRouter(RouterCreateDto createDto) {
-        Router router = routerRepository.createRouter(createDto.getAccountName());
-        return routerMapper.mapToRouterDto(router);
-    }
+    @Autowired
+    private Gson gson;
 
     @Async
-    public void handleHttpClientRequest(String host , String message , long accountId) {
-        Router router = routerRepository.getRouterAccount(accountId);
+    public void handleHttpClientRequest(Object requestBody, String consumer, HttpServletRequest request) {
+        Router router = routerRepository.getRouterAccount(consumer);
+
         EventMessageDto messageDto = new EventMessageDto();
+        messageDto.setBody(requestBody);
+        messageDto.setSenderInfo(request.getAttribute("client_url").toString());
+        messageDto.setMessage("Message from consumer " + router.getConsumerName());
 
-        messageDto.setMessage(message);
-        messageDto.setBody(routerMapper.mapToRouterDto(router));
-        messageDto.setSender_info(host);
+        String jsonString = gson.toJson(messageDto);
 
-        integrationService.composeAndPut(messageDto);
+        integrationService.composeAndPut(jsonString, router);
     }
 }

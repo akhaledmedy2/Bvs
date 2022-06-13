@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Setter
 @Getter
@@ -17,17 +16,9 @@ public class Router {
     @Column(name = "id")
     private long id;
 
-    @Column(name = "account_id")
-    private long accountId;
+    @Column(name = "queue_name")
+    private String queueName;
 
-    @Column(name = "account_name")
-    private String accountName;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "creation_date")
-    private Date creationDate;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "update_date")
-    private Date updateDate;
+    @Column(name = "consumer_name")
+    private String consumerName;
 }

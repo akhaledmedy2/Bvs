@@ -11,6 +11,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Api(value = "Router", tags = "Router", description = "Router Endpoints")
 @RestController
 @RequestMapping(path = "/")
@@ -24,13 +26,10 @@ public class RouterRestController {
         System.out.println("Callback Success with response " + eventMessageDto.toString());
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> consume() {
-        return new ResponseEntity<>(null, HttpStatus.OK);
+    @PostMapping(path = "/{consumer}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public void consume(@PathVariable String consumer,
+                        @RequestBody Object requestBody, HttpServletRequest request) {
+        routerService.handleHttpClientRequest(requestBody, consumer,request);
     }
 
-    @PostMapping(path = "/create", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RouterDto> createRouter(@RequestBody RouterCreateDto createDto) {
-        return new ResponseEntity<>(routerService.createRouter(createDto), HttpStatus.OK);
-    }
 }
